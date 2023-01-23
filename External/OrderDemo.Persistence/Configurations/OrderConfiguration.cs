@@ -17,12 +17,7 @@ namespace OrderDemo.Persistence.Configurations
             builder.ToTable(TableNames.Orders);
             builder.HasKey(p => p.Id);
 
-            // Bire çok ilişki
-            builder
-                .HasOne(p => p.Company)
-                .WithMany(p => p.Orders)
-                .HasForeignKey(p => p.CompanyId);
-
+            //// Bire çok ilişki
             builder
                 .HasOne(p => p.Product)
                 .WithMany(p => p.Orders)
