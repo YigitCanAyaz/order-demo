@@ -9,6 +9,7 @@ namespace OrderDemo.Application.Features.Companies.Commands.UpdateCompany
 {
     public sealed record UpdateCompanyCommand(
         string CompanyId,
-        TimeSpan OrderStartTime
+        int OrderStartTimeHour,
+        int OrderStartTimeMinute
     ) : IRequest<UpdateCompanyCommandResponse>;
 }

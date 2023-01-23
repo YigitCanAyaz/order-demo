@@ -13,14 +13,14 @@ public class CompaniesController : ApiController
     {
     }
 
-    [HttpGet("[action]")]
+    [HttpPost("[action]")]
     public async Task<IActionResult> CreateCompany(CreateCompanyCommand request)
     {
         CreateCompanyCommandResponse response = await _mediator.Send(request);
         return Ok(response);
     }
 
-    [HttpGet("[action]")]
+    [HttpPost("[action]")]
     public async Task<IActionResult> UpdateCompany(UpdateCompanyCommand request)
     {
         UpdateCompanyCommandResponse response = await _mediator.Send(request);
@@ -28,7 +28,7 @@ public class CompaniesController : ApiController
     }
 
     [HttpGet("[action]")]
-    public async Task<IActionResult> UpdateCompany()
+    public async Task<IActionResult> GetAllCompany()
     {
         GetAllCompanyQuery request = new();
         GetAllCompanyQueryResponse response = await _mediator.Send(request);

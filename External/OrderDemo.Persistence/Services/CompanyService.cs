@@ -33,8 +33,10 @@ namespace OrderDemo.Persistence.Services
                 ApprovalStatus = false,
                 CompanyName = request.CompanyName,
                 CreatedDate = DateTime.Now,
-                OrderStartTime = request.OrderStartTime,
-                OrderFinishTime = request.OrderFinishTime,
+                OrderStartTimeHour = request.OrderStartTimeHour,
+                OrderStartTimeMinute = request.OrderStartTimeMinute,
+                OrderFinishTimeHour = request.OrderFinishTimeHour,
+                OrderFinishTimeMinute = request.OrderFinishTimeMinute
             };
 
             await _companyCommandRepository.AddAsync(company);
@@ -46,6 +48,11 @@ namespace OrderDemo.Persistence.Services
             return _companyQueryRepository.GetAll();
         }
 
+        public async Task<Company> GetCompanyById(string companyId)
+        {
+            return await _companyQueryRepository.GetFirstById(companyId);
+        }
+
         public async Task UpdateCompanyAsync(UpdateCompanyCommand request)
         {
             var company = await _companyQueryRepository.GetFirstById(request.CompanyId);
@@ -54,7 +61,8 @@ namespace OrderDemo.Persistence.Services
             if (company.ApprovalStatus) throw new Exception("Şirket zaten onaylı!");
 
             company.ApprovalStatus = true;
-            company.OrderStartTime = request.OrderStartTime;
+            company.OrderStartTimeHour = request.OrderStartTimeHour;
+            company.OrderStartTimeMinute = request.OrderStartTimeMinute;
 
             _companyCommandRepository.Update(company);
             await _unitOfWork.SaveChangesAsync();

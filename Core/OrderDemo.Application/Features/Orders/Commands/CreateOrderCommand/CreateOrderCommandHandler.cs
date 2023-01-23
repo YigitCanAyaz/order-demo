@@ -26,18 +26,27 @@ namespace OrderDemo.Application.Features.Orders.Commands.CreateOrderCommand
 
             if (!company.ApprovalStatus) throw new Exception("Şirket aktif olmadığından sipariş alamıyoruz!");
 
-            int orderStartHour = company.OrderStartTime.Hours;
-            int orderStartMinute = company.OrderStartTime.Minutes;
+            int orderStartHour = company.OrderStartTimeHour;
+            int orderStartMinute = company.OrderStartTimeMinute;
 
-            int orderFinishHour = company.OrderFinishTime.Hours;
-            int orderFinishMinute = company.OrderStartTime.Minutes;
+            int orderFinishHour = company.OrderFinishTimeHour;
+            int orderFinishMinute = company.OrderFinishTimeMinute;
 
             int nowHour = DateTime.Now.Hour;
             int nowMinute = DateTime.Now.Minute;
 
-            if (orderStartHour < nowHour && orderFinishHour >= nowHour)
+            if (orderStartHour < nowHour)
             {
-                if (orderStartMinute < nowMinute && orderFinishMinute >= nowMinute)
+                if (orderFinishHour >= nowHour && orderFinishMinute >= nowMinute)
+                {
+                    await _orderService.CreateOrder(request);
+                }
+
+            }
+
+            else if (orderStartHour == nowHour)
+            {
+                if (orderStartMinute > nowMinute)
                 {
                     await _orderService.CreateOrder(request);
                 }
