@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OrderDemo.Domain.Repositories.CompanyRepositories
 {
-    public interface ICompanyCommandRepositories : ICommandRepository<Company>
+    public interface ICompanyCommandRepository : ICommandRepository<Company>
     {
     }
 }

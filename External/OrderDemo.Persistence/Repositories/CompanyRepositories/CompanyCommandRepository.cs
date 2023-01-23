@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OrderDemo.Persistence.Repositories.CompanyRepositories
 {
-    public sealed class CompanyCommandRepository : CommandRepository<Company>, ICompanyCommandRepositories
+    public sealed class CompanyCommandRepository : CommandRepository<Company>, ICompanyCommandRepository
     {
         public CompanyCommandRepository(AppDbContext context) : base(context)
         {

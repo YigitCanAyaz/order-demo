@@ -9,7 +9,6 @@ namespace OrderDemo.Application.Features.Companies.Commands.UpdateCompany
 {
     public sealed record UpdateCompanyCommand(
         string CompanyId,
-        TimeSpan OrderStartTime,
-        bool ApprovalStatus
+        TimeSpan OrderStartTime
     ) : IRequest<UpdateCompanyCommandResponse>;
 }

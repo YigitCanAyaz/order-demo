@@ -14,5 +14,6 @@ namespace OrderDemo.Application.Services
         Task CreateCompanyAsync(CreateCompanyCommand request);
         Task UpdateCompanyAsync(UpdateCompanyCommand request);
         IQueryable<Company> GetAll();
+        Task<Company> GetCompanyById(string companyId);
     }
 }
