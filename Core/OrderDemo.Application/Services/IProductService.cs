@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrderDemo.Application.Features.Products.Commands.CreateProduct;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace OrderDemo.Application.Services
 {
     public interface IProductService
     {
-        Task AddAsync();
+        Task AddAsync(CreateProductCommand request);
     }
 }

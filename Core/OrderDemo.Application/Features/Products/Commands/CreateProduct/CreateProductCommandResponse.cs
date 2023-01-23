@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrderDemo.Application.Features.Products.Commands.CreateProduct
 {
-    public sealed record CreateProductCommandResponse(string Message = "Ürün başarıyla eklendi!")
-    {
-    }
+    public sealed record CreateProductCommandResponse(
+        string Message = "Ürün başarıyla eklendi!"
+    );
 }
